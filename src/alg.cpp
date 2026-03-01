@@ -48,18 +48,17 @@ uint64_t result = 0;
 }
 
 uint64_t twinPrimes(uint64_t lbound, uint64_t hbound) {
-uint64_t result = 0;
-  for (uint64_t i = lbound + 1; i < hbound; i++) {
-    bool prime = checkPrime(i);
-    bool prime1 = (i >= 2) && checkPrime(i - 2);
-    bool prime2 = checkPrime(i + 2);
-    if (prime) {
-      if (prime1 || prime2) {
-        result += 1;
-      }
-      if (prime1 && prime2) {
-        result -= 1;
-      }
+    if (hbound < 5 || lbound >= hbound) return 0;
+
+    uint64_t count = 0;
+
+    for (uint64_t i = lbound; i + 2 < hbound; ++i) {
+        if (checkPrime(i) && checkPrime(i + 2)) {
+            count++;
+        }
+    }
+
+    return count;
     }
   }
   return result;
