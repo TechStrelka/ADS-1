@@ -49,17 +49,11 @@ uint64_t result = 0;
 
 uint64_t twinPrimes(uint64_t lbound, uint64_t hbound) {
     if (hbound < 5 || lbound >= hbound) return 0;
-
     uint64_t count = 0;
-
     for (uint64_t i = lbound; i + 2 < hbound; ++i) {
         if (checkPrime(i) && checkPrime(i + 2)) {
             count++;
         }
     }
-
     return count;
-    }
-  }
-  return result;
 }
